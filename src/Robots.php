@@ -9,7 +9,7 @@ class Robots
      *
      * @var array
      */
-    protected $lines = [];
+    protected array $lines = [];
 
     /** @var callable|bool */
     protected static $shouldIndex = true;
@@ -19,7 +19,7 @@ class Robots
      *
      * @return string
      */
-    public function generate()
+    public function generate(): string
     {
         return implode(PHP_EOL, $this->lines);
     }
@@ -29,7 +29,7 @@ class Robots
      *
      * @param string $sitemap
      */
-    public function addSitemap($sitemap)
+    public function addSitemap(string $sitemap): void
     {
         $this->addLine("Sitemap: $sitemap");
     }
@@ -39,7 +39,7 @@ class Robots
      *
      * @param string $userAgent
      */
-    public function addUserAgent($userAgent)
+    public function addUserAgent(string $userAgent): void
     {
         $this->addLine("User-agent: $userAgent");
     }
@@ -49,7 +49,7 @@ class Robots
      *
      * @param string $host
      */
-    public function addHost($host)
+    public function addHost(string $host): void
     {
         $this->addLine("Host: $host");
     }
@@ -59,7 +59,7 @@ class Robots
      *
      * @param string|array $directories
      */
-    public function addDisallow($directories)
+    public function addDisallow(string|array $directories): void
     {
         $this->addRuleLine($directories, 'Disallow');
     }
@@ -69,7 +69,7 @@ class Robots
      *
      * @param string|array $directories
      */
-    public function addAllow($directories)
+    public function addAllow(string|array $directories): void
     {
         $this->addRuleLine($directories, 'Allow');
     }
@@ -80,7 +80,7 @@ class Robots
      * @param string|array $directories
      * @param string       $rule
      */
-    public function addRuleLine($directories, string $rule)
+    public function addRuleLine(string|array $directories, string $rule): void
     {
         foreach ((array) $directories as $directory) {
             $this->addLine("$rule: $directory");
@@ -92,7 +92,7 @@ class Robots
      *
      * @param string $comment
      */
-    public function addComment($comment)
+    public function addComment(string $comment): void
     {
         $this->addLine("# $comment");
     }
@@ -100,7 +100,7 @@ class Robots
     /**
      * Add a spacer to the robots.txt.
      */
-    public function addSpacer()
+    public function addSpacer(): void
     {
         $this->addLine('');
     }
@@ -110,7 +110,7 @@ class Robots
      *
      * @param string $line
      */
-    public function addLine(string $line)
+    public function addLine(string $line): void
     {
         $this->lines[] = $line;
     }
@@ -120,7 +120,7 @@ class Robots
      *
      * @param string|array $lines
      */
-    protected function addLines($lines)
+    protected function addLines(string|array $lines): void
     {
         foreach ((array) $lines as $line) {
             $this->addLine($line);
@@ -132,7 +132,7 @@ class Robots
      *
      * @return void
      */
-    public function reset()
+    public function reset(): void
     {
         $this->lines = [];
     }
@@ -140,7 +140,7 @@ class Robots
     /**
      * Set callback with should index condition.
      */
-    public function setShouldIndexCallback(callable $callback)
+    public function setShouldIndexCallback(callable $callback): void
     {
         self::$shouldIndex = $callback;
     }
