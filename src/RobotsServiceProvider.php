@@ -12,7 +12,7 @@ class RobotsServiceProvider extends ServiceProvider implements DeferrableProvide
      *
      * @var bool
      */
-    protected $defer = true;
+    protected bool $defer = true;
 
     /**
      * Register the service provider.
@@ -21,9 +21,10 @@ class RobotsServiceProvider extends ServiceProvider implements DeferrableProvide
      */
     public function register()
     {
-        $this->app->bind('robots', function () {
+        $this->app->singleton('robots', function () {
             return new Robots;
         });
+
         $this->app->alias('robots', Robots::class);
     }
 
