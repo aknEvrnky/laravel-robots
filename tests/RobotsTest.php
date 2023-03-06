@@ -29,7 +29,7 @@ class RobotsTest extends TestCase
         $this->assertStringContainsString("User-agent: $userAgent", $robots->generate());
     }
 
-    public function testaddHost()
+    public function testAddHost()
     {
         $robots = $this->getRobotsService();
         $host = 'www.google.com.au';
@@ -39,7 +39,7 @@ class RobotsTest extends TestCase
         $this->assertStringContainsString("Host: $host", $robots->generate());
     }
 
-    public function testaddDisallow()
+    public function testAddDisallow()
     {
         $robots = $this->getRobotsService();
         $path = '/dir/';
@@ -65,7 +65,7 @@ class RobotsTest extends TestCase
         }
     }
 
-    public function testaddAllow()
+    public function testAddAllow()
     {
         $robots = $this->getRobotsService();
         $path = '/dir/';
@@ -92,7 +92,7 @@ class RobotsTest extends TestCase
         }
     }
 
-    public function testaddComment()
+    public function testAddComment()
     {
         $robots = $this->getRobotsService();
         $comment_1 = 'Test comment';
@@ -116,7 +116,7 @@ class RobotsTest extends TestCase
         $this->assertStringContainsString("# $comment_3", $robots->generate());
     }
 
-    public function testaddSpacer()
+    public function testAddSpacer()
     {
         $robots = $this->getRobotsService();
 
